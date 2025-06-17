@@ -27,7 +27,8 @@
     <p>© 2025 Dang. สงวนลิขสิทธิ์</p>
   </footer>
 </body>
-</html>body {
+</html>
+body {
   font-family: 'Kanit', sans-serif;
   margin: 0;
   padding: 0;
