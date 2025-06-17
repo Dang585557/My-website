@@ -1,85 +1,51 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เว็บไซต์โทนสีฟ้าทันสมัย</title>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>เว็บไซต์ของ Dang</h1>
-    <nav>
-      <a href="#">หน้าแรก</a>
-      <a href="#">เกี่ยวกับเรา</a>
-      <a href="#">ติดต่อ</a>
-    </nav>
-  </header>
+<div></div> class="container">
+  <h1> ดาวน์โหลดวิดีโอ Facebook </h1>
+  <input type="text" id="videoURL" placeholder="วางลิงก์วิดีโอ Facebook ที่นี่">
+  <button onclick="simulateDownload()">ดึงวิดีโอ</button>
+  <div id="result"></div>
 
-  <section class="content">
-    <h2>ยินดีต้อนรับ!</h2>
-    <p>นี่คือเว็บไซต์โทนสีฟ้าทันสมัยที่คุณสามารถพัฒนาต่อได้</p>
-    <button>คลิกเลย</button>
-  </section>
-
-  <footer>
-    <p>© 2025 Dang. สงวนลิขสิทธิ์</p>
-  </footer>
-</body>
-</html>
+  <div class="ads">
+    <p>พื้นที่โฆษณาของคุณ ✨</p>
+  </div>
+</div>/* พื้นหลังแบบไล่สี */
 body {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #00b4d8, #90e0ef);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
-  background-color: #e6f7ff;
-  color: #333;
+  color: #0077b6;
 }
 
-header {
-  background-color: #00aaff;
-  color: white;
-  padding: 20px;
+.container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   text-align: center;
+  max-width: 500px;
+  width: 90%;
+  animation: fadeIn 1s ease-in-out;
 }
 
-nav a {
-  color: white;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
+@keyframes fadeIn {
+function simulateDownload() {
+  const url = document.getElementById('videoURL').value.trim();
+  const result = document.getElementById('result');
 
-nav a:hover {
-  text-decoration: underline;
-}
+  if (!url) {
+    result.innerHTML = '<p style="color:red;">กรุณาวางลิงก์ก่อน</p>';
+    return;
+  }
 
-.content {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-button {
-  background-color: #0077cc;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #005fa3;
-}
-
-footer {
-  background-color: #00aaff;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  // จำลองคุณภาพวิดีโอ
+  result.innerHTML = `
+    <h3>เลือกระดับความคมชัด:</h3>
+    <a class="download-btn" href="https://example.com/video-720p.mp4" target="_blank">720p</a>
+    <a class="download-btn" href="https://example.com/video-1080p.mp4" target="_blank">1080p</a>
+    <a class="download-btn" href="https://example.com/video-4k.mp4" target="_blank">4K</a>
+  `;
 }
