@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ดาวน์โหลดวิดีโอ Facebook 4K 1080P 720P</title>
+  <style>
+    body {
+      background: #f0f8ff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .ads {
+      background: #caf0f8;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    .video-links a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      background: #00b4d8;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ดาวน์โหลดวิดีโอ Facebook</h1>
+  <input type="text" id="url" placeholder="ใส่ลิงก์ Facebook ที่นี่">
+  <br>
+  <button onclick="fetchVideo()">ดึงวิดีโอ</button>
+
+  <div class="ads">
+    🔥 พื้นที่โฆษณา
+  </div>
+
+  <div id="result" class="video-links"></div>
+
+  <script>
+    async function fetchVideo() {
+      const url = document.getElementById('url').value.trim();
+      const result = document.getElementById('result');
+      result.innerHTML = "กำลังโหลด...";
+
+      try {
+        const res = await fetch(`/api/getVideo?url=${encodeURIComponent(url)}`);
+        const data = await res.json();
+
+        if (data.error) {
+          result.innerHTML = `<p style="color:red;">${data.error}</p>`;
+          return;
+        }
+
+        result.innerHTML = '<h3>เลือกระดับความคมชัด:</h3>';
+        data.formats.forEach(format => {
+          result.innerHTML += `<a href="${format.url}" target="_blank">${format.format_note || format.height + 'p'}</a>`;
+        });
+      } catch (err) {
+        result.innerHTML = `<p style="color:red;">เกิดข้อผิดพลาด: ${err.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
